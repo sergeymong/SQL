@@ -106,7 +106,7 @@ DESC account;
 SELECT account_id, cust_id, avail_balance
 FROM account
 WHERE status = 'ACTIVE'
-      AND avail_balance > 2500;
+  AND avail_balance > 2500;
 
 # 3.3 https://cl.ly/35feddc71877
 SELECT DISTINCT open_emp_id
