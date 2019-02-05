@@ -46,7 +46,7 @@ DELETE FROM string_tbl;
 INSERT INTO string_tbl (char_fld, vchar_fld, text_fld)
 VALUES ('This string is 28 characters.',
         'This string is 28 characters.',
-        'This string is 28 characters.')
+        'This string is 28 characters.');
 
 SELECT *
 FROM string_tbl;
@@ -119,16 +119,41 @@ SELECT @@global.time_zone, @@session.time_zone;
 
 SELECT CAST('2005-03-27 15:30:00' AS DATETIME);
 
+UPDATE individual
+SET birth_date = STR_TO_DATE('October 13, 1995', '%M %d, %Y')
+WHERE cust_id = 9;
 
+SELECT *
+FROM individual
+WHERE cust_id = 9;
 
+SELECT CURRENT_DATE(), CURRENT_TIME(), CURRENT_TIMESTAMP();
 
+# work with datetime
+# you can add interval to the exist date
+SELECT DATE_ADD(CURRENT_DATE(), INTERVAL 5 DAY);
 
+# return last day of this month
+SELECT LAST_DAY('2019-02-15');
 
+SELECT DAYNAME('2019-02-21');
 
+SELECT EXTRACT(DAY FROM '2019-02-21');
 
+SELECT DATEDIFF('2006-05-15', '2005-02-05');
 
+SELECT CAST('999ABC111' AS UNSIGNED INTEGER);
 
+# TODO Homework
+# 7.1 https://cl.ly/23e1d152933b
+SELECT SUBSTRING('Please find the substring in this string', 17, 9);
 
+# 7.2 https://cl.ly/af4dc26b5593
+SELECT ABS(-25.76823), SIGN(-25.76823), ROUND(-25.76823, 2);
 
+# 7.3 https://cl.ly/91223684e319
+SELECT MONTHNAME(CURRENT_DATE()), MONTH(CURRENT_DATE());
+# or
+SELECT EXTRACT(MONTH FROM CURRENT_DATE());
 
 
