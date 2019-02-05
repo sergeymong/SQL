@@ -5,18 +5,29 @@
 # Вывод: point, date, суммарный расход пункта за день (out), суммарный
 # приход пункта за день (inc). Отсутствующие значения считать неопределенными (NULL).
 
-
-SELECT i.point, i.date, SUM(i.inc) inc, SUM(o.`out`) outc
-FROM Income i LEFT JOIN  Outcome o
-  ON o.code = i.code
-GROUP BY i.date, i.point
+USE inc_out;
+SELECT i.point, i.date, outcome, inc
+FROM
+     (SELECT point, date, SUM(inc) inc
+     FROM Income
+     GROUP BY point, date) i
+       LEFT JOIN (SELECT point, date, SUM(`out`) outcome
+       FROM Outcome
+       GROUP BY point, date) o on i.date = o.date AND i.point = o.point
 UNION
-SELECT o.point, o.date, SUM(i.inc) inc, SUM(o.`out`) outc
-FROM Outcome o LEFT JOIN Income i
-  ON o.code = i.code
-GROUP BY o.date, o.point
-ORDER BY point;
+SELECT o.point, o.date, outcome, inc
+FROM (SELECT point, date, SUM(`out`) outcome
+       FROM Outcome
+       GROUP BY point, date) o
+       LEFT JOIN (SELECT point, date, SUM(inc) inc
+     FROM Income
+     GROUP BY point, date) i on i.date = o.date AND i.point = o.point;
 
-select o.point, o.date, SUM(o.`out`) outc
-from Outcome o
-GROUP BY date, point;
+# helping queries
+SELECT point, date, SUM(`out`)
+FROM Outcome
+GROUP BY point, date;
+
+SELECT point, date, SUM(inc)
+FROM Income
+GROUP BY point, date;
