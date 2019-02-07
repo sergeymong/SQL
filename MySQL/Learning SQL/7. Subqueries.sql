@@ -209,7 +209,7 @@ WHERE emp.superior_emp_id IS NOT NULL
 ORDER BY (SELECT boss.lname FROM employee boss
   WHERE boss.emp_id = emp.superior_emp_id), emp.lname;
 
-# TODO Homework
+# Homework
 # 9.1 https://cl.ly/2837aaed9a7a
 SELECT account_id, product_cd, cust_id, avail_balance
 FROM account

@@ -85,7 +85,7 @@ WHERE avail_balance BETWEEN 500 AND 2500;
 # order is top down. you can set order with parentheses.
 # parentheses for unions are not working in mysql:)
 
-# TODO Homework
+# Homework
 # 6.1 https://cl.ly/8ff712c643b1
 # answers:
 # 1 -- L, M, N, O, P, Q, R, S, T

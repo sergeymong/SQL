@@ -119,7 +119,7 @@ HAVING MIN(avail_balance) >= 1000
        AND MAX(avail_balance) <= 10000;
 
 
-# TODO Homework
+# Homework
 # 8.1 https://cl.ly/f02492840792
 SELECT COUNT(*)
 FROM account;

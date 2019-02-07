@@ -97,7 +97,7 @@ WHERE superior_emp_id != 6 OR superior_emp_id IS NULL;
 # so, when you start work with new base,
 # check if it contains null
 
-# TODO Homework
+# Homework
 # 4.1 https://cl.ly/a1078e354d7b
 # answer -- 1, 2, 3, 5, 6, 7
 

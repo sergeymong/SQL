@@ -144,7 +144,7 @@ SELECT DATEDIFF('2006-05-15', '2005-02-05');
 
 SELECT CAST('999ABC111' AS UNSIGNED INTEGER);
 
-# TODO Homework
+# Homework
 # 7.1 https://cl.ly/23e1d152933b
 SELECT SUBSTRING('Please find the substring in this string', 17, 9);
 

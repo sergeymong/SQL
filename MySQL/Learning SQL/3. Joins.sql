@@ -115,7 +115,7 @@ FROM employee e1
     ON e1.emp_id < e2.emp_id
 WHERE e1.title = 'Teller' AND e2.title = 'Teller';
 
-# TODO Homework
+# Homework
 # 5.1 https://cl.ly/19c7ccac0e99
 SELECT e.emp_id, e.fname, e.lname, b.name
 FROM employee e INNER JOIN branch b
