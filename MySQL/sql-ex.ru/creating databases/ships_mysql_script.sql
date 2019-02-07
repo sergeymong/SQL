@@ -4,6 +4,9 @@ drop table ships;
 drop table classes;
 drop table battles;
 */
+CREATE DATABASE ships;
+USE ships;
+
 CREATE TABLE Battles (
 	name varchar (20) NOT NULL ,
 	date datetime NOT NULL 
