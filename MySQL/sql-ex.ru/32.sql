@@ -6,36 +6,19 @@
 
 USE ships;
 
-SELECT *
-FROM Classes;
+SELECT country, CAST(AVG(POWER(bore, 3) / 2) AS DECIMAL(10, 2)) mw
+FROM
+     (SELECT name, class
+      FROM Ships
+      UNION
+      SELECT ship name, ship class
+      FROM Outcomes
+      WHERE ship IN (SELECT class FROM Classes)) res
+       LEFT JOIN Classes c
+         ON res.class = c.class
+GROUP BY c.country;
 
-SELECT *
-FROM Outcomes;
-
-SELECT *
-FROM Ships;
-
-SELECT Country, CAST(AVG(bore*bore*bore)/2 AS DECIMAL(10, 2)) mw
-FROM (SELECT c.country, bore
- FROM Classes C,
- Ships S
- WHERE S.class = C.Class AND
- NOT bore IS NULL
- UNION ALL
- SELECT country, bore
- FROM Classes C,
- OutComes O
- WHERE O.Ship = C.Class AND
- NOT EXISTS (SELECT 1
- FROM Ships S
- WHERE s.Name = O.Ship
- ) AND
- NOT bore IS NULL
- GROUP BY country, bore
- ) AS Q1
-GROUP BY country;
-
-# TODO Not finished, text of task awful. Try again sometime.
+# DID IT THROUGH 5 DAYS !!!
 
 
 

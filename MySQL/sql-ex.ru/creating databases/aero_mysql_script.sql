@@ -5,6 +5,9 @@ drop table  trip;
 drop table  company;
 
 */
+
+USE aero;
+
 CREATE TABLE Company (
 	ID_comp int NOT NULL ,
 	name char (10) NOT NULL 
