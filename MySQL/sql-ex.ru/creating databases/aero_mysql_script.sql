@@ -6,6 +6,7 @@ drop table  company;
 
 */
 
+CREATE DATABASE aero;
 USE aero;
 
 CREATE TABLE Company (
