@@ -1,3 +1,6 @@
+CREATE DATABASE paint;
+USE paint;
+
 CREATE TABLE utB (
 	B_DATETIME datetime NOT NULL ,
 	B_Q_ID int NOT NULL ,
