@@ -2,16 +2,17 @@
 
 USE paint;
 
+WITH
+res AS (SELECT B_Q_ID, SUM(B_VOL) tot_col, COUNT(DISTINCT (SELECT V_COLOR FROM utV WHERE utV.V_ID = utB.B_V_ID))+1 cols
+      FROM utB
+      GROUP BY B_Q_ID)
 
-SELECT AVG(su)
-FROM(
-      SELECT Q_NAME, AVG(B_VOL) av, SUM(B_VOL) su
-      FROM utB LEFT JOIN utV uV on utB.B_V_ID = uV.V_ID LEFT JOIN utQ uQ on utB.B_Q_ID = uQ.Q_ID
-      GROUP BY Q_NAME, V_COLOR) res;
 
-SELECT *, @middlevalue
-FROM utQ;
+SELECT AVG(tot_col/cols)
+FROM res
 
-ROW
+
+
+
 
 
