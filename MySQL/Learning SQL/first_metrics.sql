@@ -98,8 +98,9 @@ FROM ltv;
 ### NEW METRICS
 WITH clients
   AS (SELECT CustomerID,
-            ROUND(SUM(tot), 1) cl_check,
-            DATEDIFF(MAX(date), MIN(date)) days_with_us,
+            ROUND(SUM(tot), 1) tot_check,
+            ROUND(AVG(tot), 1) avg_check,
+            IF(DATEDIFF(MAX(date), MIN(date)) = 0, 1, DATEDIFF(MAX(date), MIN(date))) days_with_us,
             COUNT(DISTINCT InvoiceNo) transactions
       FROM transactions
       GROUP BY CustomerID),
@@ -114,7 +115,7 @@ transactions
 
 SELECT 'LTV' what,
        ROUND(AVG(transactions) * AVG(days_with_us)
-         * (SELECT AVG(avg_check) FROM transactions), 1) val
+         * AVG(avg_check), 1) val
 FROM clients
 UNION ALL
 SELECT 'DAU' what, ROUND(AVG(DAU), 1) val
